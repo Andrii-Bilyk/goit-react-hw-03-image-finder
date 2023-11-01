@@ -23,13 +23,17 @@ class Modal extends Component {
     }
   };
 
+  handleCloseClick = () => {
+    this.props.onClose();
+  };
+
   render() {
     const { src, alt } = this.props;
 
     return (
       <StyledOverlay onClick={this.handleOverlayClick}>
         <StyledModal>
-          <img src={src} alt={alt} />
+          <img src={src} alt={alt} onClick={this.handleCloseClick}/>
         </StyledModal>
       </StyledOverlay>
     );
@@ -40,8 +44,8 @@ const StyledOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,16 +54,16 @@ const StyledOverlay = styled.div`
 `;
 
 const StyledModal = styled.div`
-  max-width: calc(100vw - 96px);
-  max-height: calc(100vh - 48px);
+  max-width: 100%;
+  max-height: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   img {
-    max-width: 70%;
-    max-height: 70%;
+    max-width: 100%;
+    max-height: 100%;
   }
 `;
 
